@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.env
+venv/
+fastapienv/
+.idea/
+.vscode/
+*.log
+
+# Uvicorn reload file
+.reload
+
+# Byte-compiled / cache
+*.pyc
+*.pkl
+
+# Node
+node_modules/
+dist/
+*.log
+*.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Vite
+.vite/
+*.tsbuildinfo
+
+# Build output
+build/
+*.local
+*.env.local
+
+# Coverage and test output
+coverage/
+htmlcov/
+.tox/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Optional: ignore lock file (if not using it consistently)
+# package-lock.json
+# poetry.lock
+
+# Static files cache
+__sapper__/
+.svelte-kit/
+
+# Editor-specific
+*.swp
+*~

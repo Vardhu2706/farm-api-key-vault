@@ -33,13 +33,17 @@ const LoginScreen = () => {
   const loginHandler = async (e) => {
     e.preventDefault();
 
+    if (!email || !password || !token) {
+      return toast.error("Please fill in all required fields.");
+    }
+
     try {
       const res = await login({ email, password, token }).unwrap();
       dispatch(setCredentials({ ...res }));
       navigate("/");
       toast.success("Logged In");
     } catch (err) {
-      toast.error(err?.data?.message || err.message);
+      toast.error(err?.data?.detail || err?.data?.message || err.message);
     }
   };
 
@@ -93,8 +97,8 @@ const LoginScreen = () => {
                   {" "}
                   New Customer? <Link to="/register">Register</Link>
                 </Col>
-              </Row></>
-
+              </Row>
+            </>
           )}
         </Form>
       </FormContainer>

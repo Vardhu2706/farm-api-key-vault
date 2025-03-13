@@ -5,13 +5,14 @@ import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
 
 const QRCodeComp = ({ otpAuthURL, isLoading }) => {
+  console.log("OTP: " + otpAuthURL);
   return (
     <>
       <Container>
         <Row></Row>
         <Row className="justify-content-md-center m-2">
           <Col xs={12} md={6} className="card p-2">
-            {isLoading ? (
+            {isLoading || !otpAuthURL ? (
               <Loader />
             ) : (
               <QRCode

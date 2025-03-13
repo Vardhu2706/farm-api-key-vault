@@ -1,12 +1,17 @@
-# Main.py
-
-# Imports
 from fastapi import FastAPI
-from app.routes import apiKeys, auth
+from fastapi.middleware.cors import CORSMiddleware
+from app.routes import auth 
 
-# Init Fast API app
 app = FastAPI()
 
-# Register Routes
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"],  
+)
+
+
 app.include_router(auth.router, prefix="/auth", tags=["Auth"])
-app.include_router(apiKeys.router, prefix="/keys", tags=["API Keys"])
+

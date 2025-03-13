@@ -14,22 +14,26 @@ from app.config import settings
 
 
 # Generate QR Code
-def generate_qr_code(email: str):
-    
+def generate_qr_code(email: str = None):
     secret = pyotp.random_base32()
     totp = pyotp.TOTP(secret)
-    otp_url = totp.provisioning_uri(name=email, issuer_name="API Key Vault")
 
-    img = qrcode.make(otp_url)
+    if email:
+        uri = totp.provisioning_uri(name=email, issuer_name="API Key Vault")
+    else:
+        uri = totp.provisioning_uri(name="user", issuer_name="API Key Vault")
+
+    img = qrcode.make(uri)
     buffer = BytesIO()
     img.save(buffer, format="PNG")
-    qr_base64 = base64.b64encode(buffer.getvalue()).decode()
+    base64_qr = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
     return {
         "secret": secret,
-        "otp_auth_url": otp_url,
-        "qr_code_base64": f"data:image/png;base64,{qr_base64}"
+        "otp_auth_url": uri,
+        "qr_code_base64": f"data:image/png;base64,{base64_qr}"
     }
+
 
 
 # Verify Token

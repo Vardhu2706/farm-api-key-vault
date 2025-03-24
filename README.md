@@ -82,25 +82,3 @@ python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().d
 ```
 
 ---
-
-## ✅ Status
-
-- [x] User authentication & 2FA
-- [x] Key CRUD & encryption
-- [x] Key sharing & unsharing
-- [x] Frontend integration
-- [ ] Deployment (optional)
-
----
-
-## 📸 Screenshots
-_(Add screenshots here of login, key listing, share modal, etc)_
-
----
-
-## 📄 License
-MIT
-
----
-
-Built with ❤️ using FastAPI and React.
